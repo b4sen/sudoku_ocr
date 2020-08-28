@@ -11,3 +11,5 @@ You can find the CNN in the `model.py`. Using the `train.py` with `-dl` or `--do
 The `extractor.py` has the methods to extract the sudoku board and the digits in the cells.
 The `solver.py` contains the backtracking algorithm.
 The `main.py` is the entrypoint of this tool. The models and the input images are hardcoded.
+
+The code is based on ![this tutorial](https://www.pyimagesearch.com/2020/08/10/opencv-sudoku-solver-and-ocr/)
