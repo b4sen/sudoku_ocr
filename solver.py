@@ -15,7 +15,7 @@ class Solver:
     def find_empty(self):
         for i in range(len(self.board)):
             for j in range(len(self.board[0])):
-                if board[i][j] == 0:
+                if self.board[i][j] == 0:
                     return (i, j)  # row, col
 
         return False
