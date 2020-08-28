@@ -50,7 +50,7 @@ def generate_board(img: str, raw_img: bool = True):
         cellLocs.append(row)
     return cellLocs, board, puzzleImage
 
-cellLocs, board, puzzleImg = generate_board('wikipedia_sudoku.png', False)
+cellLocs, board, puzzleImg = generate_board('test_img/wikipedia_sudoku.png', False)
 solver = Solver()
 solver.set_board(board)
 solver.solve()
