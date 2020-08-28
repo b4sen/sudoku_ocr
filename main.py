@@ -10,14 +10,20 @@ import cv2
 
 model = load_model('model/digit_rec.h5')
 
-def generate_board(img: str):
-    img = cv2.imread(img)
-    img = imutils.resize(img, width=600)
-
-    (puzzleImage, warped) = find_puzzle(img)
-
+def generate_board(img: str, raw_img: bool = True):
+    if raw_img:
+        img = cv2.imread(img)
+        img = imutils.resize(img, width=600)
+        (puzzleImage, warped) = find_puzzle(img)
+    else:
+        img = cv2.imread(img, cv2.CV_8UC1)
+        img = imutils.resize(img, width=600)
+        puzzleImage = img.copy()
+        warped = img.copy()
+    
     stepX = warped.shape[1] // 9
     stepY = warped.shape[0] // 9
+    
     cellLocs = []
     board = np.zeros((9,9), dtype='int')
     for y in range(9):
@@ -44,7 +50,7 @@ def generate_board(img: str):
         cellLocs.append(row)
     return cellLocs, board, puzzleImage
 
-cellLocs, board, puzzleImg = generate_board('test.jpeg')
+cellLocs, board, puzzleImg = generate_board('wikipedia_sudoku.png', False)
 solver = Solver()
 solver.set_board(board)
 solver.solve()
